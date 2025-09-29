@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Tabuada</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #resultado {
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      display: inline-block;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gerador de Tabuada</h1>
+  <p>Digite um número entre 1 e 10:</p>
+  <input type="number" id="numero" min="1" max="10" placeholder="Ex: 5">
+  <button onclick="gerarTabuada()">Gerar</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function gerarTabuada() {
+      const num = parseInt(document.getElementById('numero').value);
+      const resultado = document.getElementById('resultado');
+      resultado.innerHTML = '';
+
+      if (isNaN(num) || num < 1 || num > 10) {
+        resultado.innerHTML = "<p style='color:red'>Por favor, digite um número válido de 1 a 10.</p>";
+        return;
+      }
+
+      let html = `<h2>Tabuada do ${num}</h2>`;
+      for (let i = 1; i <= 10; i++) {
+        html += `${num} x ${i} = ${num * i}<br>`;
+      }
+
+      resultado.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
